@@ -1,79 +1,32 @@
 const tools = [
 
-{
-name: "ChatGPT",
 
-keywords: [
-"Text",
-"Schreiben",
-"Recherche",
-"Lernen",
-"Programmieren",
-"Zusammenfassung"
+{
+name:"NotebookLM",
+
+keywords:[
+"lernen",
+"vorlesung",
+"skript",
+"pdf",
+"dokument",
+"zusammenfassung",
+"studium",
+"notizen",
+"lernkarte"
 ],
 
 description:
-"Ein vielseitiger KI-Assistent für Texte, Lernen, Recherche und Programmierung.",
+"NotebookLM analysiert deine eigenen Dokumente und erstellt Zusammenfassungen, Fragen und Lernhilfen.",
 
 reason:
-"Sehr guter Allrounder für Studium und Alltag.",
-
-price:
-"Kostenlos + Plus Version",
-
-link:
-"https://chatgpt.com"
-
-},
-
-
-
-{
-name: "Claude",
-
-keywords: [
-"PDF",
-"Skript",
-"Zusammenfassung",
-"Text",
-"Paper"
-],
-
-description:
-"KI für lange Dokumente, wissenschaftliche Texte und Analysen.",
-
-reason:
-"Besonders stark bei großen Dateien und langen Texten.",
-
-price:
-"Kostenlos + Pro Version",
-
-link:
-"https://claude.ai"
-
-},
-
-
-
-{
-name: "NotebookLM",
-
-keywords: [
-"PDF",
-"Skript",
-"Vorlesung",
-"Studium",
-"Lernen"
-],
-
-description:
-"Analysiert eigene Dokumente und erstellt Zusammenfassungen.",
-
-reason:
-"Perfekt für Studenten mit vielen Unterlagen.",
+"Du arbeitest mit eigenen Unterlagen. NotebookLM ist besonders geeignet für Vorlesungen, PDFs und Recherche.",
 
 price:
 "Kostenlos",
+
+use:
+"Studium, Dokumente, Lernen",
 
 link:
 "https://notebooklm.google.com"
@@ -83,23 +36,149 @@ link:
 
 
 {
-name:"Canva",
+name:"ChatGPT",
 
 keywords:[
-"Logo",
-"Design",
-"Präsentation",
-"Bilder"
+"text",
+"schreiben",
+"recherche",
+"lernen",
+"programmieren",
+"ideen",
+"zusammenfassung",
+"frage"
 ],
 
 description:
-"Erstellt Designs, Präsentationen und Grafiken.",
+"Ein vielseitiger KI-Assistent für Schreiben, Lernen, Recherche und Programmierung.",
 
 reason:
-"Sehr einfach für visuelle Inhalte.",
+"Sehr flexibel und für viele verschiedene Aufgaben geeignet.",
 
 price:
-"Kostenlos + Pro",
+"Kostenlos + Plus Version",
+
+use:
+"Alltag, Studium, Arbeit",
+
+link:
+"https://chatgpt.com"
+
+},
+
+
+
+{
+name:"Claude",
+
+keywords:[
+"pdf",
+"lange texte",
+"analyse",
+"paper",
+"dokument",
+"zusammenfassung"
+],
+
+description:
+"Claude ist spezialisiert auf lange Texte und komplexe Dokumentenanalyse.",
+
+reason:
+"Besonders geeignet, wenn du große Dateien oder wissenschaftliche Texte verstehen möchtest.",
+
+price:
+"Kostenlos + Pro Version",
+
+use:
+"Recherche, Dokumente",
+
+link:
+"https://claude.ai"
+
+},
+
+
+
+{
+name:"Anki",
+
+keywords:[
+"lernkarte",
+"karteikarten",
+"lernen",
+"auswendig",
+"studium"
+],
+
+description:
+"Eine Lernplattform mit intelligentem Wiederholungssystem für Karteikarten.",
+
+reason:
+"Optimal für langfristiges Lernen und Prüfungsvorbereitung.",
+
+price:
+"Kostenlos",
+
+use:
+"Studium, Prüfungen",
+
+link:
+"https://apps.ankiweb.net"
+
+},
+
+
+
+{
+name:"Quizlet",
+
+keywords:[
+"lernkarte",
+"lernen",
+"karteikarten"
+],
+
+description:
+"Erstellt digitale Karteikarten und Lernsets.",
+
+reason:
+"Einfacher Einstieg für schnelle Lernkarten.",
+
+price:
+"Kostenlos + Plus Version",
+
+use:
+"Schule, Studium",
+
+link:
+"https://quizlet.com"
+
+},
+
+
+
+{
+name:"Canva",
+
+keywords:[
+"design",
+"logo",
+"präsentation",
+"bilder",
+"grafik"
+],
+
+description:
+"KI-gestütztes Design-Tool für Präsentationen, Grafiken und Inhalte.",
+
+reason:
+"Sehr einfach für visuelle Projekte und Präsentationen.",
+
+price:
+"Kostenlos + Pro Version",
+
+use:
+"Design, Marketing",
 
 link:
 "https://www.canva.com"
@@ -109,27 +188,90 @@ link:
 
 
 {
-name:"DeepL",
+name:"Midjourney",
 
 keywords:[
-"Übersetzen",
-"Sprache",
-"Englisch"
+"bilder",
+"kunst",
+"grafik",
+"design"
 ],
 
 description:
-"Sehr genaue KI-Übersetzungen.",
+"KI zur Erstellung hochwertiger Bilder und visueller Konzepte.",
 
 reason:
-"Besonders gut für Studium und Arbeit.",
+"Stark für kreative Bildgenerierung.",
 
 price:
-"Kostenlos + Pro",
+"Kostenpflichtig",
+
+use:
+"Design, Kreativität",
+
+link:
+"https://www.midjourney.com"
+
+},
+
+
+
+{
+name:"Cursor",
+
+keywords:[
+"programmieren",
+"code",
+"software",
+"entwicklung"
+],
+
+description:
+"KI-gestützter Code-Editor für Entwickler.",
+
+reason:
+"Hilft beim Schreiben, Verstehen und Verbessern von Programmcode.",
+
+price:
+"Kostenlos + Pro Version",
+
+use:
+"Programmierung",
+
+link:
+"https://cursor.com"
+
+},
+
+
+
+{
+name:"DeepL",
+
+keywords:[
+"übersetzen",
+"sprache",
+"englisch",
+"deutsch"
+],
+
+description:
+"KI-Übersetzer mit hoher Genauigkeit.",
+
+reason:
+"Sehr geeignet für Studium, Arbeit und professionelle Übersetzungen.",
+
+price:
+"Kostenlos + Pro Version",
+
+use:
+"Übersetzung",
 
 link:
 "https://www.deepl.com"
 
 }
+
 
 
 ];

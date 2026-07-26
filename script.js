@@ -2,14 +2,10 @@ let selectedCategories = [];
 
 
 
-// Kategorien auswählen
-
-const categoryButtons =
-document.querySelectorAll(".category");
+const buttons = document.querySelectorAll(".category");
 
 
-
-categoryButtons.forEach(button => {
+buttons.forEach(button => {
 
 
 button.addEventListener("click",()=>{
@@ -18,14 +14,12 @@ button.addEventListener("click",()=>{
 button.classList.toggle("active");
 
 
-
 if(button.classList.contains("active")){
 
-selectedCategories.push(
-button.innerText
-);
+selectedCategories.push(button.innerText);
 
 }
+
 else{
 
 selectedCategories =
@@ -45,25 +39,32 @@ item => item !== button.innerText
 
 
 
-// Ergebnisse öffnen
 
 function showResults(){
 
 
-const text =
+let input =
 document.getElementById("userInput").value;
+
+
+if(input.trim() === ""){
+
+alert("Bitte beschreibe zuerst deine Aufgabe.");
+
+return;
+
+}
 
 
 
 localStorage.setItem(
 "userNeed",
-text
+input
 );
 
 
 
-window.location.href =
-"ergebnisse.html";
+window.location.href="ergebnisse.html";
 
 
 }
@@ -74,47 +75,36 @@ window.location.href =
 
 
 
-// Ergebnisse erzeugen
-
-
-const resultContainer =
-document.getElementById(
-"results-container"
-);
+const container =
+document.getElementById("results-container");
 
 
 
-if(resultContainer){
+if(container){
 
 
-const userText =
-localStorage.getItem(
-"userNeed"
-)
+
+let text =
+(localStorage.getItem("userNeed") || "")
 .toLowerCase();
 
 
 
-
-let matches = [];
+let results=[];
 
 
 
 tools.forEach(tool=>{
 
 
-let score = 0;
+let score=0;
 
 
 
 tool.keywords.forEach(keyword=>{
 
 
-if(
-userText.includes(
-keyword.toLowerCase()
-)
-){
+if(text.includes(keyword.toLowerCase())){
 
 score++;
 
@@ -125,16 +115,14 @@ score++;
 
 
 
-if(score > 0){
+if(score>0){
 
-matches.push({
+results.push({
 
 tool:tool,
-
 score:score
 
 });
-
 
 }
 
@@ -145,28 +133,26 @@ score:score
 
 
 
-matches.sort(
-(a,b)=>b.score-a.score
-);
+results.sort((a,b)=>b.score-a.score);
 
 
 
 
 
-if(matches.length === 0){
+if(results.length===0){
 
 
-resultContainer.innerHTML = `
+container.innerHTML=`
 
 <div class="tool-card">
 
 <h2>
-Keine eindeutige Empfehlung gefunden
+Keine eindeutige Empfehlung
 </h2>
 
 <p>
-Versuche deine Aufgabe genauer zu beschreiben.
-
+Beschreibe deine Aufgabe genauer.
+Zum Beispiel: "Ich möchte aus PDFs Lernkarten erstellen."
 </p>
 
 </div>
@@ -180,16 +166,14 @@ Versuche deine Aufgabe genauer zu beschreiben.
 
 
 
-
-
-matches.slice(0,3).forEach(item=>{
+results.slice(0,3).forEach(item=>{
 
 
 let tool=item.tool;
 
 
 
-resultContainer.innerHTML += `
+container.innerHTML += `
 
 
 <div class="tool-card">
@@ -205,7 +189,9 @@ ${tool.description}
 </p>
 
 
+
 <div class="reason">
+
 
 <strong>
 Warum empfohlen:
@@ -215,20 +201,35 @@ Warum empfohlen:
 
 ${tool.reason}
 
+
 </div>
 
 
 
 <p>
+<strong>Preis:</strong>
 ${tool.price}
 </p>
 
 
-<a href="${tool.link}" target="_blank">
+<p>
 
-Website öffnen →
+<strong>
+Geeignet für:
+</strong>
+
+${tool.use}
+
+</p>
+
+
+
+<a href="${tool.link}" target="_blank" rel="noopener noreferrer">
+
+Website besuchen →
 
 </a>
+
 
 
 </div>

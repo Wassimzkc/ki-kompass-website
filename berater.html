@@ -6,7 +6,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Compass Berater</title>
+<title>Compass Berater | ZKAKI</title>
+
+<meta name="description" content="Beschreibe deine Aufgabe und Compass findet passende KI-Tools.">
 
 <link rel="stylesheet" href="style.css">
 
@@ -16,15 +18,26 @@
 <body>
 
 
+<header class="header">
+
+
 <a href="index.html" class="logo-area">
 
 <div class="logo">
-K
+C
 </div>
 
-<span>
+<div>
+
+<span class="brand-name">
 Compass
 </span>
+
+<small>
+by ZKAKI
+</small>
+
+</div>
 
 </a>
 
@@ -44,15 +57,13 @@ Zurück
 
 
 <h1>
-Was möchtest du mit KI erreichen?
+Welche Aufgabe möchtest du lösen?
 </h1>
 
 
 <p>
-Beschreibe deine Aufgabe und wir finden passende KI-Tools.
+Beschreibe dein Ziel und Compass empfiehlt passende KI-Tools.
 </p>
-
-
 
 
 
@@ -60,47 +71,47 @@ Beschreibe deine Aufgabe und wir finden passende KI-Tools.
 
 
 <button class="category">
-✍️ Texte schreiben
+Texte schreiben
 </button>
 
 
 <button class="category">
-📚 Zusammenfassen
+Lernen
 </button>
 
 
 <button class="category">
-🔎 Recherche
+Recherche
 </button>
 
 
 <button class="category">
-📄 PDFs analysieren
+PDF analysieren
 </button>
 
 
 <button class="category">
-🎨 Bilder erstellen
+Bilder erstellen
 </button>
 
 
 <button class="category">
-🎥 Videos erstellen
+Videos erstellen
 </button>
 
 
 <button class="category">
-📊 Präsentationen
+Präsentationen
 </button>
 
 
 <button class="category">
-💻 Programmieren
+Programmieren
 </button>
 
 
 <button class="category">
-🌍 Übersetzen
+Übersetzen
 </button>
 
 
@@ -109,28 +120,26 @@ Beschreibe deine Aufgabe und wir finden passende KI-Tools.
 
 
 
-
 <textarea 
 id="userInput"
-placeholder="Beispiel: Ich brauche eine KI, die mir meine Bauingenieur-Vorlesungen zusammenfasst...">
+placeholder="Beispiel: Ich möchte meine Vorlesungsnotizen zusammenfassen und daraus Lernkarten erstellen">
 </textarea>
 
 
 
-
-
-<button class="primary-btn" onclick="showResults()">
+<button onclick="showResults()" class="primary-btn">
 
 Empfehlungen erhalten
 
 </button>
 
 
-
 </main>
 
 
 
+
+<script src="tools.js"></script>
 <script src="script.js"></script>
 
 
