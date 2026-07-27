@@ -1,244 +1,122 @@
-let selectedCategories = [];
+async function showResults() {
+
+
+    const input = document.getElementById("userInput").value;
+
+
+    if(input.trim() === ""){
+
+        alert("Bitte beschreibe zuerst deine Aufgabe.");
+
+        return;
+
+    }
 
 
 
-const buttons = document.querySelectorAll(".category");
+    try {
 
 
-buttons.forEach(button => {
+        const response = await fetch("http://localhost:3000/api/compass", {
 
 
-button.addEventListener("click",()=>{
+            method: "POST",
 
 
-button.classList.toggle("active");
+            headers: {
+
+                "Content-Type": "application/json"
+
+            },
 
 
-if(button.classList.contains("active")){
+            body: JSON.stringify({
 
-selectedCategories.push(button.innerText);
+                message: input
+
+            })
+
+
+        });
+
+
+
+        const data = await response.json();
+
+
+
+        localStorage.setItem(
+            "compassAnswer",
+            data.answer
+        );
+
+
+
+        window.location.href = "ergebnisse.html";
+
+
+
+    } catch(error){
+
+
+        console.error(error);
+
+
+        alert(
+            "Keine Verbindung zum Compass Server."
+        );
+
+
+    }
+
 
 }
 
-else{
-
-selectedCategories =
-selectedCategories.filter(
-item => item !== button.innerText
-);
-
-}
-
-
-});
-
-
-});
 
 
 
 
 
 
-function showResults(){
-
-
-let input =
-document.getElementById("userInput").value;
-
-
-if(input.trim() === ""){
-
-alert("Bitte beschreibe zuerst deine Aufgabe.");
-
-return;
-
-}
-
-
-
-localStorage.setItem(
-"userNeed",
-input
-);
-
-
-
-window.location.href="ergebnisse.html";
-
-
-}
-
-
-
-
-
-
-
-const container =
-document.getElementById("results-container");
+const container = document.getElementById("results-container");
 
 
 
 if(container){
 
 
+    const answer = localStorage.getItem("compassAnswer");
 
-let text =
-(localStorage.getItem("userNeed") || "")
-.toLowerCase();
 
 
+    if(answer){
 
-let results=[];
 
+        container.innerHTML = `
 
 
-tools.forEach(tool=>{
+        <div class="tool-card">
 
 
-let score=0;
+            <h2>
+            Compass KI-Empfehlung
+            </h2>
 
 
+            <div class="reason">
 
-tool.keywords.forEach(keyword=>{
+            ${answer.replace(/\n/g,"<br>")}
 
+            </div>
 
-if(text.includes(keyword.toLowerCase())){
 
-score++;
+        </div>
 
-}
 
+        `;
 
-});
 
-
-
-if(score>0){
-
-results.push({
-
-tool:tool,
-score:score
-
-});
-
-}
-
-
-});
-
-
-
-
-
-results.sort((a,b)=>b.score-a.score);
-
-
-
-
-
-if(results.length===0){
-
-
-container.innerHTML=`
-
-<div class="tool-card">
-
-<h2>
-Keine eindeutige Empfehlung
-</h2>
-
-<p>
-Beschreibe deine Aufgabe genauer.
-Zum Beispiel: "Ich möchte aus PDFs Lernkarten erstellen."
-</p>
-
-</div>
-
-`;
-
-
-
-}
-
-
-
-
-results.slice(0,3).forEach(item=>{
-
-
-let tool=item.tool;
-
-
-
-container.innerHTML += `
-
-
-<div class="tool-card">
-
-
-<h2>
-${tool.name}
-</h2>
-
-
-<p>
-${tool.description}
-</p>
-
-
-
-<div class="reason">
-
-
-<strong>
-Warum empfohlen:
-</strong>
-
-<br>
-
-${tool.reason}
-
-
-</div>
-
-
-
-<p>
-<strong>Preis:</strong>
-${tool.price}
-</p>
-
-
-<p>
-
-<strong>
-Geeignet für:
-</strong>
-
-${tool.use}
-
-</p>
-
-
-
-<a href="${tool.link}" target="_blank" rel="noopener noreferrer">
-
-Website besuchen →
-
-</a>
-
-
-
-</div>
-
-
-`;
-
-
-});
+    }
 
 
 }
